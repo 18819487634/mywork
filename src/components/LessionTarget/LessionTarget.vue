@@ -4,9 +4,12 @@
             <span>{{this.targetContent.title}}</span>
             <img @click="this.handelArrow" class="spread_icon" :class="this.isClose ? 'rotate_icon' : ''" src="../../assets/target_arrow.png"/>
         </div>
-        <div class="target_detail" v-show="!this.isClose">
-            <LevelDetail :content="item" v-for="item in targetContent.level_list" :key="item.id"/>
-        </div>
+        <transition name="targetDetail">
+            <div class="target_detail" v-show="!this.isClose">
+                <LevelDetail :content="item" v-for="item in targetContent.level_list" :key="item.id"/>
+            </div>
+        </transition>
+        
     </div>
 </template>
 <script>
@@ -92,4 +95,14 @@ export default {
 .target_detail>div:last-child {
     padding-bottom: 3.66vw;
 }
+.targetDetail-enter-active {
+    transition: all 1s ease;
+}
+.targetDetail-leave-active {
+    transition: all 0.3s cubic-bezier(0,0,1,1);
+}
+.targetDetail-enter, .targetDetail-leave-to {
+    opacity: 0;
+}
+
 </style>

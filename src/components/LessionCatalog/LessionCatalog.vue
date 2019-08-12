@@ -1,20 +1,25 @@
 <template>
-    <div>
-        <transition name="spread-button">
+    <div @click="this.preventClick" id="test">
+        <transition name="catalogWrap">
             <div class="spread_button" v-if="!this.isShow" @mouseover="mouseOver">
                 <img class="spread_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMTciIGZpbGw9IiM1QzVCNkIiLz4KICAgICAgICA8ZyBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiPgogICAgICAgICAgICA8cGF0aCBkPSJNMTEuMzQ3IDExbDQuODUzIDQuODUzYS43LjcgMCAwIDEgMCAuOTlsLTQuODUzIDQuODUyTTE5Ljc4MSAxMS40MzRsNC44NTMgNC44NTJhLjcuNyAwIDAgMSAwIC45OUwxOS43OCAyMi4xMyIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" />
                 <span>目录</span>
             </div>
         </transition>
         
-        <transition name="catalog-wrap">
+        <transition name="catalogWrap">
             <div class="catalog_wrap" v-if="this.isShow">
                 <div class="catalog_content">
                     <img class="catalog_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMTciIGZpbGw9IiM1QzVCNkIiLz4KICAgICAgICA8ZyBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiPgogICAgICAgICAgICA8cGF0aCBkPSJNMTEuMzQ3IDExbDQuODUzIDQuODUzYS43LjcgMCAwIDEgMCAuOTlsLTQuODUzIDQuODUyTTE5Ljc4MSAxMS40MzRsNC44NTMgNC44NTJhLjcuNyAwIDAgMSAwIC45OUwxOS43OCAyMi4xMyIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" />
                     <div v-for="item in targetList" :key="item.id">
-                        <div class="target_title">{{item.title}}</div>
-                        <div class="level_detail" v-for="val in item.level_list" :key="val.id">
-                            <div class="level_name">{{val.name}}</div>
+                        <div class="target_title" @click="handleCatlogDetail($event)">
+                            <span>{{item.title}}</span>
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDIyIDIyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgyMnYyMkgweiIvPgogICAgICAgIDxwYXRoIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjIuMSIgZD0iTTYuMTg3IDEzLjU5N2w0Ljg1My00Ljg1MmEuNy43IDAgMCAxIC45OSAwbDQuODUyIDQuODUyIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" />
+                        </div>
+                        <div :id="'level' + item.level_list.length">
+                            <div class="level_detail" v-for="val in item.level_list" :key="val.id">
+                                <div class="level_name">{{val.name}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -27,6 +32,11 @@
 <script>
 export default {
     name: 'lession-catalog',
+    data() {
+        return {
+            isFold: true
+        }
+    },
     props: {
         targetList: {
             type: Array,
@@ -46,41 +56,56 @@ export default {
         }
 
     },
-    data() {
-        return {
-        }
-    },
     mounted() {
     },
     methods: {
         mouseOver() {
             this.$emit('handelCatalog')
+        },
+
+        preventClick(e) {
+            e.stopPropagation();
+        },
+
+        handleCatlogDetail(e) {
+            const val = window.getComputedStyle(e.currentTarget.nextElementSibling, 'display');
+            if(val !== 'none') {
+                e.currentTarget.nextElementSibling.style.display = 'none';
+            } else {
+                e.currentTarget.nextElementSibling.style.display = 'block';
+            }
+            if(this.isFold) {
+                this.isFold = false
+            } else {
+                this.isFold = true
+            }
         }
     }
 }
 </script>
 
 <style scoped>
+.catalogWrap-enter-active {
+  transition: all 0.5s ease;
+}
+.catalogWrap-leave-active {
+  transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.catalogWrap-enter, .catalogWrap-leave-to {
+  transform: translateX(400px);
+  opacity: 0;
+}
 
-.catalog-wrap-enter-active {
+/* .catalogWrap-enter-active {
   transition: all 0.5s ease 0s;
 }
-.catalog-wrap-leave-active {
+.catalogWrap-leave-active {
   transition: all 0.5s ease 0s;
-}
+} */
 /* .catalog_detail-enter, .catalog_detail-leave-to {
   transform: translateX(10px);
   opacity: 0;
 } */
-
-.spread-button-enter-active {
-    transition: all 0.4s ease 0s;
-}
-
-.spread-button-leave-active {
-  transition: all 0.5s ease 0s;
-}
-
 
 .catalog_wrap {
     position: fixed;
@@ -132,6 +157,21 @@ export default {
     -webkit-transition: all .1s;
     transition: all .1s;
     padding-left: 28px;
+    padding-right: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+.target_title>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.target_title>img {
+    position: absolute;
+    right: 35px;
+    top: 0;
 }
 .level_detail {
     position: relative;
