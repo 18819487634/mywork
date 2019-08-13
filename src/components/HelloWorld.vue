@@ -1,15 +1,25 @@
 <template>
   <div class="lession-detail" @click="this.close">
     <!-- 头部返回 -->
-    <HeaderWrap :title="this.headerTitle" />
+    <HeaderWrap :title="this.headerTitle" :targetUrl="this.headerUrl" />
+
     <LessionCatalog @handelCatalog="this.handleCatalog" :targetList="target_list" :isShow="this.isShow" />
+
     <!-- 课程详情标题 -->
-    <LessionDetailTitle :currentProgress="20" :title="this.title" />
+
+    <LessionDetailTitle :isTry="true" :currentProgress="20" :title="this.title" />
+
     <!-- 购买背景 -->
+
     <PurchaseBg :imgSrc="this.groupImg" :hasButton="true" :buttonText="this.buttonText" :targetUrl="this.groupTargetUrl" :title="this.firstTitle" />
+    
     <!-- 课程目标详情 -->
+
+    
     <LessionTarget :targetContent="item" v-for="(item, key) in target_list" :key="key" />
+    
     <!-- 购买背景 -->
+
     <PurchaseBg :styleProp="this.buyBgStyle" :imgSrc="this.buyBg" :targetUrl="this.groupTargetUrl" :title="this.firstTitle" />
   </div>
 </template>
@@ -26,6 +36,7 @@ export default {
   data () {
     return {
       headerTitle: '返回课程中心',
+      headerUrl:'http://www.baidu.com',
       title: 'Python基础语法',
       groupImg: require('../assets/buy_group_bg.png'),
       groupTargetUrl: 'http://www.baidu.com',
@@ -155,7 +166,7 @@ export default {
     PurchaseBg,
     LessionTarget,
     HeaderWrap,
-    LessionCatalog
+    LessionCatalog,
   },
  
   methods: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="level_detail">
+    <div class="level_detail" :id="'level_detail' + content.id">
         <div class="level_name">{{content.name}}</div>
         <div class="course_content">
             <div class="main_course" :class="this.content.main.status ? 'hover_style' : ''">

@@ -1,7 +1,7 @@
 <template>
     <div class="goback">
         <div>
-            <a href="">
+            <a :href="this.targetUrl">
                 <img class="icon" src="../../assets/goback_arrow.png"/>
                 <span class="goback-text">{{this.title}}</span>
             </a>
@@ -14,6 +14,10 @@ export default {
     name: 'header-wrap',
     props: {
         title: {
+            type: String,
+            default: ''
+        },
+        targetUrl: {
             type: String,
             default: ''
         }

@@ -3,7 +3,7 @@
         <div class="title">
            <div class="title-content">
                 <span>{{this.title}}</span>
-                <div class="trial-time">试用期</div>
+                <div class="trial-time" v-if="this.isTry">试用期</div>
            </div>
         </div>
         <div>

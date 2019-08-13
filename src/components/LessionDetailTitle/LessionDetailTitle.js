@@ -8,6 +8,10 @@ export default {
         title: {
             type: String,
             default: ''
+        },
+        isTry: {
+            type: Boolean,
+            default: false
         }
     },
     data() {

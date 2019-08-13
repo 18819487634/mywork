@@ -46,7 +46,7 @@ export default {
                 this.renderProgress(slogan, progress)
             })
             } else {
-            window.cancelAnimationFrame(this.timer)
+                window.cancelAnimationFrame(this.timer)
             }
         }
     }
