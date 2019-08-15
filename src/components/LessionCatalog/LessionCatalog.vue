@@ -1,14 +1,14 @@
 <template>
-    <div @click="this.preventClick" id="test">
+    <div @click="this.preventClick">
         <transition name="catalogWrap">
-            <div class="spread_button" v-if="!this.isShow" @mouseover="mouseOver">
+            <div class="spread_button" id="spreadButton" v-show="!this.isShow" @mouseover="mouseOver">
                 <img class="spread_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMTciIGZpbGw9IiM1QzVCNkIiLz4KICAgICAgICA8ZyBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiPgogICAgICAgICAgICA8cGF0aCBkPSJNMTEuMzQ3IDExbDQuODUzIDQuODUzYS43LjcgMCAwIDEgMCAuOTlsLTQuODUzIDQuODUyTTE5Ljc4MSAxMS40MzRsNC44NTMgNC44NTJhLjcuNyAwIDAgMSAwIC45OUwxOS43OCAyMi4xMyIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" />
                 <span>目录</span>
             </div>
         </transition>
         
         <transition name="catalogWrap">
-            <div class="catalog_wrap" v-if="this.isShow">
+            <div class="catalog_wrap" id="catalogWrap" v-show="this.isShow">
                 <div class="catalog_content">
                     <img class="catalog_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMTciIGZpbGw9IiM1QzVCNkIiLz4KICAgICAgICA8ZyBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyLjEiPgogICAgICAgICAgICA8cGF0aCBkPSJNMTEuMzQ3IDExbDQuODUzIDQuODUzYS43LjcgMCAwIDEgMCAuOTlsLTQuODUzIDQuODUyTTE5Ljc4MSAxMS40MzRsNC44NTMgNC44NTJhLjcuNyAwIDAgMSAwIC45OUwxOS43OCAyMi4xMyIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" />
                     <div v-for="item in targetList" :key="item.id">
@@ -56,12 +56,12 @@ export default {
         isShow: {
             immediate: true,
             handler (val) {
-                console.log('isShow Value:' + val);
             }
         }
 
     },
     mounted() {
+        window.addEventListener('scroll', this.handleScroll);
     },
     methods: {
         mouseOver() {
@@ -74,14 +74,11 @@ export default {
 
         handleCatlogDetail(e) {
             const val = e.currentTarget.nextElementSibling.style.display;
-            // console.log(e.currentTarget.lastElementChild)
-            console.log(val)
             if(val !== 'none') {
                 e.currentTarget.nextElementSibling.style.display = 'none'
                 // e.currentTarget.lastElementChild.style.WebkitTransform = 'rotate(180deg)'
                 e.currentTarget.lastElementChild.className = 'hide_errow';
             } else {
-                console.log('111')
                 e.currentTarget.nextElementSibling.style.display = 'block';
                 // e.currentTarget.lastElementChild.style.WebkitTransform = 'rotate(360deg)'
                 e.currentTarget.lastElementChild.className = 'show_errow';
@@ -93,13 +90,21 @@ export default {
             }
         },
         goToTarget(id) {
-            console.log(id)
             const val = 'level_detail' + id;
             document.getElementById(val).scrollIntoView();
-            // document.body.animate(
-            //     {scrollTop: document.getElementById(val).offsetTop}, 
-            //     {duration: 200, easing: 'steps(7, end)'}
-            // );
+        },
+        handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            const clientWidth = document.body.clientWidth;
+            if(scrollTop > document.querySelector('#progressRef').offsetTop + ((clientWidth/100)*4.62)) {
+                document.getElementById('spreadButton').style.top = 6.09 + 'vw';
+                document.getElementById('catalogWrap').style.top = 6.09 + 'vw';
+                // this.renderProgressFixed(0, this.currentProgress)
+                
+            } else {
+                document.getElementById('spreadButton').style.top = 2.5 + 'vw';
+                document.getElementById('catalogWrap').style.top = 2.5 + 'vw';
+            }
         }
     }
 }
@@ -119,11 +124,10 @@ export default {
 
 .catalog_wrap {
     position: fixed;
-    top: 3.47vw;
+    top: 2.5vw;
     width: 22vw;
     right: 0;
     background: #4b4b56;
-    -webkit-box-shadow: 0 5px 5px 2px hsla(0,0%,39%,.5);
     box-shadow: 0 5px 5px 2px hsla(0,0%,39%,.5);
     opacity: 0.96;
     z-index: 20;
@@ -133,22 +137,24 @@ export default {
     background: #4b4b56;
     opacity: 0.96;
     position: fixed;
-    top: 3.47vw;
+    top: 2.5vw;
     right: 0;
-    width: 84px;
-    height: 44px;
-    padding-left: 5px;
-    border-radius: 22px 0 0 22px;
+    width: 4.5vw;
+    height: 2.4vw;
+    padding-left: 0.2vw;
+    border-radius: 2.4vw 0 0 2.4vw;
     background-color: #4b4b56;
-    -webkit-box-shadow: -2px 2px 10px 0 rgba(0,0,0,.21);
-    box-shadow: -2px 2px 10px 0 rgba(0,0,0,.21);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
+.spread_button>img {
+    width: 1.9vw;
+}
 .spread_button>span {
-    margin-left: 10px;
+    margin-left: 0.2vw;
+    font-size: 0.9vw;
 }
 
 .catalog_content {
@@ -165,7 +171,6 @@ export default {
     font-size: 18px;
     color: #fff;
     overflow: hidden;
-    -webkit-transition: all .1s;
     transition: all .1s;
     padding-left: 28px;
     padding-right: 60px;

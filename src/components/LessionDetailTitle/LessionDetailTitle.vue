@@ -6,7 +6,7 @@
                 <div class="trial-time" v-if="this.isTry">试用期</div>
            </div>
         </div>
-        <div>
+        <div id="progressRef">
             <div class="progress-wrap">
                 <span class="progress-text">课程进度</span>
                 <div class="progress-bar">
@@ -26,7 +26,22 @@
                     <button class="button">继续闯关</button>
                 </div>
             </div>
-            
+        </div>
+        <div class="fixed_progress" v-show="isFixed">
+            <div class="progress_bar_fixed">
+                <div class="move_progress_fixed" :style="{width: currentProgress + '%'}" id="moveProgressRefFixed">
+                    <div class="progress_num_fixed">
+                        <span>{{currentProgress}}%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="recent_level_fixed">
+                <span class="level_text_fixed">
+                    <span>最近解锁关卡:&nbsp;</span>
+                    <span :title="this.recentLevel">{{this.recentLevel}}</span>
+                </span>
+                <button class="button_fixed">继续闯关</button>
+            </div>
         </div>
     </div>
 </template>

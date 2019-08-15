@@ -30,7 +30,10 @@
                 <div class="mask" v-if="!this.content.main.status"/>
             </div>
             <div class="advance_practice" :class="this.content.main.status ? 'hover_style' : ''">
-                <div class="advance_practice_title">进阶练习</div>
+                <div class="advance_practice_title">
+                    <div>进阶练习</div>
+                    <div>0/1</div>
+                </div>
                 <img class="course_status" src="../../assets/completed.png" v-if="this.content.homework_list[0].status" />
                 <img class="course_status" src="../../assets/locked.png" v-if="!this.content.homework_list[0].status" />
                 <div class="mask" v-if="!this.content.main.status"/>
@@ -108,16 +111,16 @@ export default {
 
 <style scoped>
 .level_detail {
-    padding: 3.44vw 4.83vw 0 3.88vw;
+    padding: 0 3.23vw 3.44vw 2.81vw;
 }
 .level_name {
-	font-family: MicrosoftYaHeiLight;
-	font-size: 1.4vw;
-	font-weight: 300;
-	font-stretch: normal;
-	letter-spacing: 0.14vw;
+	margin-bottom: 1.27vw;
+    font-family: MicrosoftYaHeiLight;
+    font-size: 1.02vw;
+    font-weight: 300;
+    font-stretch: normal;
+    letter-spacing: 0.1vw;
     color: #241752;
-    margin-bottom: 1.76vw;
 }
 .course_content {
     display: flex;
@@ -126,14 +129,14 @@ export default {
 }
 .main_course {
     position: relative;
-    width: 27.38vw;
-	height: 12.23vw;
-	background-color: #ffffff;
-    border-radius: 0.32vw;
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width: 20.03vw;
+    height: 8.93vw;
+    background-color: #ffffff;
+    border-radius: 0.32vw;
 }
 .mask {
     position: absolute;
@@ -149,49 +152,49 @@ export default {
     box-shadow: 0vw 0.29vw 1.17vw 0vw rgba(34, 62, 143, 0.6);
 }
 .cover_picture {
-    width: 8.2vw;
-	height: 8.86vw;
-	background-color: #24c6b5;
+    margin-left: 0.81vw;
+    width: 5.99vw;
+    height: 6.43vw;
+    background-color: #24c6b5;
     border-radius: 0.63vw;
-    margin-left: 1.1vw;
 }
 .main_course_right {
     display: flex;
     flex-direction: column;
-    height: 8.86vw;
+    height: 6.43vw;
     justify-content: space-between;
     align-items: flex-start;
-    margin-left: 0.66vw;
+    margin-left: 0.49vw;
 }
 .main_course_name {
-    font-family: MicrosoftYaHei-Bold;
-    font-size: 1.23vw;
-    font-weight: 600;
-    font-stretch: normal;
-    letter-spacing: 0.12vw;
-    color: #241752;
-    width: 14vw;
+    width: 10vw;
     word-break: break-all;
     max-height: 6vw;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 0.9vw;
+    font-weight: 600;
+    font-stretch: normal;
+    letter-spacing: 0.09vw;
+    color: #241752;
 }
 
 .course_status {
-    width: 2.05vw;
+    width: 1.33vw;
     position: absolute;
-    top: 0.81vw;
-    right: 1.46vw;
+    top: 0.64vw;
+    right: 0.76vw;
 }
 
 .progress_bar{
     position: relative;
-    width: 16.03vw;
-    height: 0.66vw;
-    border-radius: 0.32vw;
-    background: #EEEEEE;
+    width: 11.69vw;
+    height: 0.44vw;
+    border-radius: 0.21vw;
+    background: #e0e0e0;
 }
 .progress_num {
     z-index: 1;
@@ -203,15 +206,15 @@ export default {
     position: absolute;
     width: 2.56vw;
     text-align: center;
-    top: -1.2vw;
+    top: -1vw;
     right: -0.6vw;
     margin: 0 auto;
     vertical-align: middle;
     font-family: MicrosoftYaHeiLight;
-    font-size: 0.88vw;
-    font-weight: 300;
+    font-size: 0.64vw;
+    font-weight: normal;
     font-stretch: normal;
-    letter-spacing: 0.09vw;
+    letter-spacing: 0.07vw;
     color: #241752;
 }
 
@@ -221,84 +224,97 @@ export default {
     top: 0;
     width: 0;
     z-index: 1;
-    height: 0.66vw;
-	background-image: linear-gradient(91deg, #21b3ff 0%, #c4588d 100%);
-	box-shadow: 0vw 0.29vw 0.29vw 0vw rgba(34, 62, 143, 0.2);
-	border-radius: 0.28vw;
+    height: 0.44vw;
+    background-image: linear-gradient(91deg, #21b3ff 0%, #c4588d 100%);
+    box-shadow: 0vw 0.29vw 0.29vw 0vw rgba(34, 62, 143, 0.2);
+    border-radius: 0.21vw;
 }
 
 .course_practice {
     position: relative;
-    margin-left: 1.39vw;
-    width: 21.23vw;
-	height: 6.15vw;
-	background-color: #ffffff;
-    border-radius: 0.32vw;
+    margin-left: 1.02vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
+    width: 15.52vw;
+    height: 3.93vw;
+    background-color: #ffffff;
+    border-radius: 0.32vw;
 }
 .practice_img {
-    width: 3.59vw;
+    margin-left: 1.04vw;
+    width: 2.63vw;
     border-radius: 0.32vw;
-    margin-left: 1.46vw;
 }
 
 .practice_right {
-    height: 3.51vw;
+    height: 2.55vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-left: 0.66vw;
 }
 .practice {
-    font-family: MicrosoftYaHei;
-    font-size: 1.05vw;
-    font-weight: 600;
-    font-stretch: normal;
-    letter-spacing: 0.1vw;
-    color: #949399;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 12vw;
+    width: 7vw;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 0.77vw;
+    font-weight: 600;
+    font-stretch: normal;
+    letter-spacing: 0.08vw;
+    color: #241752;
 }
 .practice_tip {
-    width: 5.12vw;
-    height: 1.1vw;
+    text-align: center;
+    width: 3.7vw;
+    height: 0.76vw;
     background-color: #f3f3f3;
     border-radius: 0.32vw;
     font-family: MicrosoftYaHeiLight;
-    font-size: 0.7vw;
-    font-weight: normal;
+    font-size: 0.51vw;
+    font-weight: 300;
     font-stretch: normal;
-    line-height: 1.1vw;
-    letter-spacing: 0.07vw;
+    line-height: 0.76vw;
+    letter-spacing: 0.05vw;
     color: #afafb2;
-    text-align: center;
 }
 
 .advance_practice {
     position: relative;
-    width: 14.64vw;
-	height: 6.15vw;
-	background-color: #ffffff;
-    border-radius: 0.32vw;
-    margin-left: 1.39vw;
+    margin-left: 1.04vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     cursor: pointer;
+    width: 10.63vw;
+    height: 3.93vw;
+    background-color: #ffffff;
+    border-radius: 0.32vw;
 }
 .advance_practice_title {
-    font-family: MicrosoftYaHei;
-	font-size: 1.05vw;
-	font-weight: 600;
-	font-stretch: normal;
-	letter-spacing: 0.1vw;
-    color: #949399;
-    margin-left: 1.02vw;
+    margin-left: 0.73vw;
+    height: 2.55vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.advance_practice_title>div:first-child {
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 0.77vw;
+    font-weight: 600;
+    font-stretch: normal;
+    letter-spacing: 0.08vw;
+    color: #241752;
+}
+.advance_practice_title>div:last-child {
+    font-family: MicrosoftYaHeiLight;
+	font-size: 0.51vw;
+	font-weight: 300;
+	font-stretch: normal;
+	letter-spacing: 0.05vw;
+	color: #afafb2;
+}
 </style>

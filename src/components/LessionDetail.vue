@@ -2,9 +2,7 @@
   <div class="lession-detail" @click="this.close">
     <!-- 头部返回 -->
     <HeaderWrap :title="this.headerTitle" :targetUrl="this.headerUrl" />
-
-    <LessionCatalog @handelCatalog="this.handleCatalog" :targetList="target_list" :isShow="this.isShow" />
-
+    
     <!-- 课程详情标题 -->
 
     <LessionDetailTitle :isTry="true" :currentProgress="20" :title="this.title" />
@@ -15,12 +13,11 @@
     
     <!-- 课程目标详情 -->
 
-    
-    <LessionTarget :targetContent="item" v-for="(item, key) in target_list" :key="key" />
-    
-    <!-- 购买背景 -->
+    <LessionTarget :targetContent="item" v-for="(item, index) in target_list" :key="index" :targetNum="index" />
 
-    <PurchaseBg :styleProp="this.buyBgStyle" :imgSrc="this.buyBg" :targetUrl="this.groupTargetUrl" :title="this.firstTitle" />
+    <!-- 课程目录 -->
+    <LessionCatalog @handelCatalog="this.handleCatalog" :targetList="target_list" :isShow="this.isShow" />
+  
   </div>
 </template>
 
@@ -32,7 +29,7 @@ import LessionTarget from './LessionTarget/LessionTarget';
 import LessionCatalog from './LessionCatalog/LessionCatalog.vue';
 
 export default {
-  name: 'HelloWorld',
+  name: 'lession-detail',
   data () {
     return {
       headerTitle: '返回课程中心',
@@ -42,9 +39,7 @@ export default {
       groupTargetUrl: 'http://www.baidu.com',
       firstTitle: 'Python基础语法+Python爬虫精进',
       buttonText: '组合购买减300',
-      secondTitle: '购买Python基础语法课程，解锁全部内容',
-      buyBg: require('../assets/buy_bg.png'),
-      buyBgStyle: 'margin-top: 4.32vw',
+      
       isShow: false,
       target_list: [
         {
@@ -157,7 +152,7 @@ export default {
             }
           ]
         }
-      ]
+      ],
     }
   },
  
@@ -167,6 +162,9 @@ export default {
     LessionTarget,
     HeaderWrap,
     LessionCatalog,
+  },
+  mounted() {
+    
   },
  
   methods: {
@@ -183,11 +181,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .lession-detail {
-  overflow-y: scroll;
-  height: 100%;
   background-color: #f7f7fb;
   font-family: PingFang SC,-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,Hiragino Sans GB,Microsoft YaHei,Source Han Sans SC,WenQuanYi Micro Hei,sans-serif;
-  padding-bottom: 18.16vw;
 }
 
 </style>

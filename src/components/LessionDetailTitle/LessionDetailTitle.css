@@ -1,16 +1,20 @@
 .lession-title {
     position: relative;
-    width: 75vw;
-    padding-bottom: 4.39vw;
-    margin: 3.15vw auto 0;
+    width: 54.45vw;
+    padding-bottom: 1.92vw;
+    margin: 1.15vw auto 0;
 }
 .title {
     position: relative;
-    padding: 3.29vw 0 3.37vw 3.95vw;
     color: #fff;
     display: block;
+    border-radius: 1.58vw 1.58vw 0.32vw 0.32vw;
+    height: 6.54vw;
     background-color: #24c6b5;
-	border-radius: 1.58vw 1.58vw 0.32vw 0.32vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2.86vw;
 }
 .title-content {
     display: flex;
@@ -20,57 +24,58 @@
 
 .title div span {
     position: relative;
-	font-family: MicrosoftYaHei-Bold;
-	font-size: 2.1vw;
-	font-weight: normal;
-	font-stretch: normal;
-	letter-spacing: 0.21vw;
-	color: #ffffff;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 1.54vw;
+    font-weight: 600;
+    font-stretch: normal;
+    line-height: 2.5vw;
+    letter-spacing: 0.15vw;
+    color: #ffffff;
 }
 
 .trial-time {
     position: relative;
-    width: 6.88vw;
-    height: 2.27vw;
-    float: left;
-    margin-left: 2.56vw;
-    background-color: #48ffec;
-    border-radius: 1.07vw;
-    font-family: MicrosoftYaHei;
-    font-size: 1.23vw;
-    font-weight: normal;
-    font-stretch: normal;
-    letter-spacing: 0.25vw;
-    color: #643784;
+    margin-left: 1.82vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.progress-wrap{
-    position: relative;
-    padding: 3.15vw 3.73vw 0;
-    border-radius: 0 0 1.58vw 1.58vw;
-    background-color: #ffffff;
-}
-
-.progress-text {
-    position: absolute;
-    top: 1vw;
-    left: 3.73vw;
-    color: #1b1243;
+    width: 5.03vw;
+    height: 1.59vw;
+    background-color: #48ffec;
+    border-radius: 0.78vw;
     font-family: MicrosoftYaHei;
     font-size: 0.88vw;
     font-weight: normal;
     font-stretch: normal;
-    letter-spacing: 0.04vw;
+    line-height: 2.5vw;
+    letter-spacing: 0.17vw;
+    color: #643784;
+}
+.progress-wrap{
+    position: relative;
+    padding: 2.5vw 2.68vw 0;
+    border-radius: 0 0 1.58vw 1.58vw;
+    background-color: #ffffff;
+    box-shadow: 0vw 0.29vw 1.17vw 0vw rgba(34, 62, 143, 0.2);
+}
+
+.progress-text {
+    position: absolute;
+    top: 0.98vw;
+    left: 2.68vw;
+    font-family: MicrosoftYaHei;
+    font-size: 0.66vw;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0.03vw;
     color: #6b6b6b;
 }
 .progress-bar{
     position: relative;
     width: 100%;
-    height: 1.17vw;
+    height: 0.83vw;
+    background-color: #dff7f4;
     border-radius: 0.32vw;
-    background: #EEEEEE;
 }
 .progress-num {
     z-index: 1;
@@ -78,47 +83,44 @@
     font-weight: 600;
 }
 .progress-num>img {
-    width: 2.56vw;
+    width: 1.88vw;
     position: absolute;
-    top: -2.2vw;
-    right: -0.6vw;
+    top: -1.6vw;
+    right: -0.3vw;
 }
 
 .progress-num >span {
     position: absolute;
+    width: 1.88vw;
+    text-align: center;
+    top: -1.5vw;
+    right: -0.3vw;
     font-family: MicrosoftYaHei;
-    font-size: 0.79vw;
+    font-size: 0.57vw;
     font-weight: normal;
     font-stretch: normal;
-    width: 2.56vw;
-    text-align: center;
-    top: -1.9vw;
-    right: -0.6vw;
-    margin: 0 auto;
-    vertical-align: middle;
+    letter-spacing: 0vw;
+    color: #fefefe;
 }
-
 .move-progress {
     position: absolute;
     left: 0;
-    top: -0.295vw;
+    top: -0.21vw;
     width: 0;
-    height: 1.76vw;
-    border-radius: 0.32vw;
     z-index: 1;
-    background-image: linear-gradient(-90deg,	#fa386a 0%, 	#32b1ec 100%);
+    height: 1.25vw;
+    background-image: linear-gradient(-90deg, #fa386a 0%, #32b1ec 100%);
+    box-shadow: 0vw 0.29vw 0.29vw 0vw rgba(34, 62, 143, 0.2);
+    border-radius: 0.32vw;
 }
-
 .progress-arrow {
     float: right;
     margin-right: 0.88vw;
     opacity: .4;
-    height: 1.76vw;
+    height: 1.25vw;
 }
-
 .recent-level {
-    width: 67vw;
-    padding: 4.25vw 0 2.2vw;
+    padding: 3.42vw 0 1.56vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -129,30 +131,26 @@
     justify-content: flex-start;
     width: 29.8vw;
 }
-
 .level-text>span:first-child {
     display: inline-block;
-    font-weight: 600;
-    font-family: MicrosoftYaHei;
-    font-size: 1.58vw;
-    font-stretch: normal;
-    letter-spacing: 0.16vw;
-    color: #241752;
     word-break: keep-all;
-}
-
-.level-text>span:last-child {
-    color: #1b1243;
-    font-weight: 300;
-    font-family: MicrosoftYaHeiLight;
-    font-size: 1.23vw;
-    letter-spacing: 0.12vw;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 1.15vw;
+    font-weight: 600;
+    font-stretch: normal;
+    letter-spacing: 0.11vw;
     color: #241752;
+}
+.level-text>span:last-child {
     margin-top: 0.3vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-family: MicrosoftYaHeiLight;
+    font-size: 0.89vw;
     font-weight: 300;
+    letter-spacing: 0.09vw;
+    color: #241752;
 }
 .recent-level>button {
     border: 0;
@@ -160,19 +158,127 @@
     text-decoration: none;
     cursor: pointer;
     outline: none;
-    -webkit-appearance: none;
-    float: right;
+    width: 8.65vw;
+    height: 2.14vw;
     background-color: #1497f9;
-    border-radius: 1.67vw;
-    color: #fefefe;
-    letter-spacing: 0.31vw;
+    border-radius: 1.05vw;
     font-family: MicrosoftYaHei;
-    font-size: 1.58vw;
+    font-size: 0.95vw;
     font-weight: normal;
     font-stretch: normal;
-    width: 13.69vw;
-    height: 3.37vw;
+    letter-spacing: 0.19vw;
+    color: #fefefe;
 }
 .recent-level>button:hover {
+    background-color: #00b4ff;
+}
+
+
+
+.fixed_progress {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100vw;
+	height: 6.09vw;
+    background-color: #ffffff;
+    z-index: 20;
+}
+
+.progress_bar_fixed{
+    position: relative;
+    top: 1.76vw;
+    margin: 0 auto;
+    width: 51.72vw;
+    height: 0.7vw;
+    background-color: #dff7f4;
+    border-radius: 0.32vw;
+}
+.progress_num_fixed {
+    z-index: 1;
+    color: #31285d;
+    font-weight: 600;
+}
+
+.progress_num_fixed >span {
+    position: absolute;
+    width: 1.88vw;
+    text-align: center;
+    top: 50%;
+    right: 0;
+    font-family: MicrosoftYaHei;
+    font-size: 0.57vw;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0vw;
+    color: #fefefe;
+    transform: translate(0, -50%);
+}
+.move_progress_fixed {
+    position: absolute;
+    left: 0;
+    top: -0.17vw;
+    width: 0;
+    z-index: 1;
+    height: 1.04vw;
+    background-image: linear-gradient(-90deg, #fa386a 0%, #32b1ec 100%);
+    box-shadow: 0vw 0.29vw 0.29vw 0vw rgba(34, 62, 143, 0.2);
+    border-radius: 0.32vw;
+}
+
+.recent_level_fixed {
+    padding: 2.66vw 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 51.72vw;
+    margin: 0 auto;
+}
+.level_text_fixed {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 29.8vw;
+}
+.level_text_fixed>span:first-child {
+    display: inline-block;
+    word-break: keep-all;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 0.88vw;
+    font-weight: 600;
+    font-stretch: normal;
+    line-height: 2.5vw;
+    letter-spacing: 0.09vw;
+    color: #241752;
+}
+.level_text_fixed>span:last-child {
+    margin-top: 0.3vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: MicrosoftYaHeiLight;
+    font-size: 0.66vw;
+    font-weight: 300;
+    letter-spacing: 0.09vw;
+    color: #241752;
+}
+.recent_level_fixed>button {
+    border: 0;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    width: 8.65vw;
+    height: 2.14vw;
+    background-color: #1497f9;
+    border-radius: 1.05vw;
+    font-family: MicrosoftYaHei;
+    font-size: 0.95vw;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0.19vw;
+    color: #fefefe;
+}
+.recent_level_fixed>button:hover {
     background-color: #00b4ff;
 }

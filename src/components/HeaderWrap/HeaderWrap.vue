@@ -31,8 +31,8 @@ export default {
     background-color: #ffffff;
 }
 .goback div {
-    width: 75vw;
-    height: 3.47vw;
+    width: 54.45vw;
+    height: 2.5vw;
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;
@@ -50,15 +50,15 @@ export default {
     font-size: 14px;
 }
 .goback-text {
-    margin-left: 1.02vw;
+    margin-left: 0.5vw;
     font-family: MicrosoftYaHei;
-    font-size: 1.58vw;
+    font-size: 0.8vw;
     font-weight: normal;
     font-stretch: normal;
     letter-spacing: 0.16vw;
     color: #4b4474;
 }
 .icon {
-  width: 0.88vw;
+  width: 0.38vw;
 }
 </style>

@@ -1,9 +1,12 @@
 <template>
-    <div class="bg_img" :style="this.styleProp">
-        <img :src="this.imgSrc"/>
+    <div class="bg_img" :style="this.styleProp" @click="this.goToTarget">
+        <img :src="this.imgSrc" />
         <div class="content">
             <div>{{this.title}}</div>
-            <div class="button" v-if="this.hasButton" @click="this.goToTarget">{{this.buttonText}}</div>
+            <div class="button" v-if="this.hasButton">
+                {{this.buttonText}}
+                <img src="../../assets/compose_arrow.png" />
+            </div>
         </div>
     </div>
 </template>
@@ -51,11 +54,12 @@ export default {
 </script>
 <style scoped>
 .bg_img {
-    width: 74.74vw;
-    height: 14.64vw;
     margin: 0 auto;
     position: relative;
     cursor: pointer;
+    width: 54.45vw;
+    height: 10.63vw;
+    border-radius: 1.58vw;
 }
 .bg_img>img {
     width: 100%;
@@ -66,28 +70,43 @@ export default {
 }
 .content {
     width: 100%;
-    font-family: MicrosoftYaHei-Bold;
-    font-size: 2.1vw;
-    font-weight: 600;
-    letter-spacing: 0.21vw;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffffff;
     text-align: center;
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 1.54vw;
+    font-weight: 600;
+    font-stretch: normal;
+    letter-spacing: 0.15vw;
+    color: #ffffff;
 }
 .button {
-    width: 25.62vw;
-    height: 3.59vw;
-    background-image: linear-gradient(-90deg, #f542d5 0%, #ed7c55 35%, #f2b68c 65%, #f7f0c2 100%);
-    border-radius: 1.78vw;
+    position: relative;
     margin: 0 auto;
-    margin-top: 1.9vw;
+    margin-top: 1.22vw;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    width: 18.59vw;
+    height: 2.66vw;
+    background-image: linear-gradient(-90deg, #f542d5 0%, #ed7c55 35%, #f2b68c 65%, #f7f0c2 100%);
+    border-radius: 1.26vw;
+    font-family: MicrosoftYaHei;
+    font-size: 1.17vw;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0.23vw;
+    color: #fefefe;
+}
+.button>img {
+    width: 1.07vw;
+    position: absolute;
+    right: 1.41vw;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 </style>
 

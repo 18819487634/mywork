@@ -16,12 +16,16 @@ export default {
     },
     data() {
         return {
-            recentLevel: '第9关 课堂：深夜食堂营业记'
+            recentLevel: '第9关 课堂：深夜食堂营业记',
+            isFixed: false,
+            isShowFixed: false
         }
     },
   
     mounted() {
-        this.renderProgress(0, this.currentProgress)
+        this.renderProgress(0, this.currentProgress);
+        // this.handleScroll();
+        window.addEventListener('scroll', this.handleScroll);
     },
   
     methods: {
@@ -36,6 +40,41 @@ export default {
                 })
             } else {
                 window.cancelAnimationFrame(this.timer)
+            }
+        },
+
+        renderProgressFixed(slogan, progress) {
+            if(this.isShowFixed) {
+                return
+            }
+            if(document.getElementById('moveProgressRefFixed')) {
+                this.isShowFixed = true
+                this.handleProgress(slogan, progress)
+            }
+        },
+        handleProgress(slogan, progress) {
+            if(slogan < progress) {
+                slogan += Math.random(0, 1);
+                const val = slogan + '%';
+                if(document.getElementById('moveProgressRefFixed')) {
+                    document.getElementById('moveProgressRefFixed').style.width = val
+                }
+                this.timer = window.requestAnimationFrame(() => {
+                    this.handleProgress(slogan, progress)
+                })
+            } else {
+                window.cancelAnimationFrame(this.timer)
+            }
+        },
+        handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            const clientWidth = document.body.clientWidth;
+            if(scrollTop > document.querySelector('#progressRef').offsetTop + ((clientWidth/100)*4.62)) {
+                this.isFixed = true
+                // this.renderProgressFixed(0, this.currentProgress)
+            } else {
+                this.isFixed = false
+                this.isShowFixed = false
             }
         }
     }
